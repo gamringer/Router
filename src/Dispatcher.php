@@ -5,49 +5,49 @@ namespace gamringer\Router;
 class Dispatcher
 {
 
-	protected $router;
-	protected $rules = [];
+    protected $router;
+    protected $rules = [];
 
-	public function __construct(Routes $router)
-	{
-		$this->router = $router;
-	}
+    public function __construct(Routes $router)
+    {
+        $this->router = $router;
+    }
 
-	public function dispatch(Routeable $request)
-	{
-		$extract = null;
-		$route = $this->router->route($request, $extract);
-		
-		$destination = $route->getDestination();
-		$callable = $this->getCallable($destination);
+    public function dispatch(Routeable $request)
+    {
+        $extract = null;
+        $route = $this->router->route($request, $extract);
+        
+        $destination = $route->getDestination();
+        $callable = $this->getCallable($destination);
 
-		return $callable($request);
-	}
+        return $callable($request);
+    }
 
-	public function addRule(\Closure $rule)
-	{
-		$this->rules[] = $rule;
-	}
+    public function addRule(\Closure $rule)
+    {
+        $this->rules[] = $rule;
+    }
 
-	public function clearRules()
-	{
-		$this->rules = [];
-	}
+    public function clearRules()
+    {
+        $this->rules = [];
+    }
 
-	public function getRules()
-	{
-		return $this->rules;
-	}
+    public function getRules()
+    {
+        return $this->rules;
+    }
 
-	protected function getCallable($destination)
-	{
-		foreach ($this->rules as $rule) {
-			$ruling = $rule($destination);
-			if (is_callable($ruling)) {
-				return $ruling;
-			}
-		}
+    protected function getCallable($destination)
+    {
+        foreach ($this->rules as $rule) {
+            $ruling = $rule($destination);
+            if (is_callable($ruling)) {
+                return $ruling;
+            }
+        }
 
-		throw new Exception('[Dispatcher] could not dispatch [Routeable] to destination');
-	}
+        throw new Exception('[Dispatcher] could not dispatch [Routeable] to destination');
+    }
 }

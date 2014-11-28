@@ -4,7 +4,7 @@ namespace gamringer\Router;
 
 interface Ventureable
 {
-	public function getName();
+    public function getName();
 
-	public function match($target, &$extract = null);
+    public function match($target, &$extract = null);
 }

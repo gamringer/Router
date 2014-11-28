@@ -4,11 +4,11 @@ namespace gamringer\Router;
 
 interface Routes
 {
-	public function getRoutes();
-	
-	public function clearRoutes();
+    public function getRoutes();
+    
+    public function clearRoutes();
 
-	public function addRoute(Ventureable $route);
+    public function addRoute(Ventureable $route);
 
-	public function route(Routeable $request);
+    public function route(Routeable $request);
 }
