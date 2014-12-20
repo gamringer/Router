@@ -10,7 +10,7 @@ class Router implements Routes
 
     public function setScope(callable $scope)
     {
-        $this->scope = $scope->bindTo($this);
+        $this->scope = $scope;
     }
 
     public function clearRoutes()
