@@ -30,7 +30,7 @@ trait Routeability
     {
         $extract = null;
         if ($route->match($scope($this), $extract)) {
-            $attributes = array_filter($extract, function($key){
+            $attributes = array_filter($extract, function ($key) {
                 return !is_integer($key);
             }, ARRAY_FILTER_USE_KEY);
 
