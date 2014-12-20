@@ -61,7 +61,7 @@ class RouterTest extends \PHPUnit_Framework_TestCase
 
         $route = $router->route($routeable);
         $this->assertSame($route, $router->getRoutes()['foo']);
-        
+
         $routeable->setAttributes([]);
         $route = $router->route($routeable, Router::ROUTE_ADD_ATTRIBUTES);
         $this->assertArrayHasKey('foo', $routeable->getAttributes());
@@ -69,7 +69,7 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         $routeable->setAttributes([]);
         $route = $router->route($routeable, Router::ROUTE_SET_ATTRIBUTES);
         $this->assertArrayHasKey('foo', $routeable->getAttributes());
-        
+
 
         return $router;
     }
@@ -97,7 +97,7 @@ class RouterTest extends \PHPUnit_Framework_TestCase
     public function testClearRoutes($router)
     {
         $this->assertNotEmpty($router->getRoutes());
-        
+
         $router->clearRoutes();
 
         $routes = $router->getRoutes();

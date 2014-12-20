@@ -32,7 +32,7 @@ class Router implements Routes
 
         return $this;
     }
-    
+
     public function route(Routeable $request, $mode = 0)
     {
         foreach ($this->routes as $route) {

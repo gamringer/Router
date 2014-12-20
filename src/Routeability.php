@@ -41,7 +41,7 @@ trait Routeability
                 case Router::ROUTE_SET_ATTRIBUTES:
                     $this->setAttributes($attributes);
                     break;
-                
+
                 case Router::ROUTE_ADD_ATTRIBUTES:
                     $this->addAttributes($attributes);
                     break;

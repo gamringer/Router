@@ -5,7 +5,7 @@ namespace gamringer\Router;
 interface Routes
 {
     public function getRoutes();
-    
+
     public function clearRoutes();
 
     public function addRoute(Ventureable $route);

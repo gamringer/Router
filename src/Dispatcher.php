@@ -15,7 +15,7 @@ class Dispatcher
     public function dispatch(Routeable $request)
     {
         $route = $this->router->route($request);
-        
+
         $destination = $route->getDestination();
         $callable = $this->getCallable($destination);
 

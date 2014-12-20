@@ -51,9 +51,9 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Tests that the route returns proper constructor arguments
-     * 
+     *
      * @depends testProperConstructor
-     */ 
+     */
     public function testRuleManipulations($dispatcher)
     {
         $rule = function($destination){
@@ -81,9 +81,9 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Tests dispatching
-     * 
+     *
      * @depends testRuleManipulations
-     */ 
+     */
     public function testDispatches($dispatcher)
     {
         $routeable = new Routeable('foo');
@@ -93,11 +93,11 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Tests dispatching
-     * 
+     *
      * @expectedException Exception
      *
      * @depends testRuleManipulations
-     */ 
+     */
     public function testDoesntDispatch($dispatcher)
     {
         $routeable = new Routeable('foo');
