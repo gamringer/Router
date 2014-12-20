@@ -4,6 +4,9 @@ namespace gamringer\Router;
 
 class Router implements Routes
 {
+    const ROUTE_NO_ATTRIBUTES = 0;
+    const ROUTE_ADD_ATTRIBUTES = 0b1;
+    const ROUTE_SET_ATTRIBUTES = 0b10;
 
     protected $routes = [];
     protected $scope;
@@ -30,10 +33,10 @@ class Router implements Routes
         return $this;
     }
     
-    public function route(Routeable $request)
+    public function route(Routeable $request, $mode = 0)
     {
         foreach ($this->routes as $route) {
-            if ($request->discover($route, $this->scope)) {
+            if ($request->discover($route, $this->scope, $mode)) {
                 return $route;
             }
         }

@@ -4,7 +4,6 @@ namespace gamringer\Router;
 
 class Dispatcher
 {
-
     protected $router;
     protected $rules = [];
 
@@ -15,8 +14,7 @@ class Dispatcher
 
     public function dispatch(Routeable $request)
     {
-        $extract = null;
-        $route = $this->router->route($request, $extract);
+        $route = $this->router->route($request);
         
         $destination = $route->getDestination();
         $callable = $this->getCallable($destination);

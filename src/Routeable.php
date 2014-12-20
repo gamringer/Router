@@ -10,5 +10,5 @@ interface Routeable
 
     public function addAttributes(Array $attributes);
 
-    public function discover(Ventureable $route, callable $scope);
+    public function discover(Ventureable $route, callable $scope, $mode);
 }

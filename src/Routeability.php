@@ -26,11 +26,26 @@ trait Routeability
         return $this;
     }
 
-    public function discover(Ventureable $route, callable $scope)
+    public function discover(Ventureable $route, callable $scope, $mode)
     {
         $extract = null;
         if ($route->match($scope($this), $extract)) {
-            $this->attributes = array_merge($extract, $this->attributes);
+            $attributes = array_filter($extract, function($key){
+                return !is_integer($key);
+            }, ARRAY_FILTER_USE_KEY);
+
+            switch ($mode) {
+                case Router::ROUTE_NO_ATTRIBUTES:
+                    break;
+
+                case Router::ROUTE_SET_ATTRIBUTES:
+                    $this->setAttributes($attributes);
+                    break;
+                
+                case Router::ROUTE_ADD_ATTRIBUTES:
+                    $this->addAttributes($attributes);
+                    break;
+            }
 
             return true;
         }
