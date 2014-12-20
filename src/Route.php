@@ -4,7 +4,6 @@ namespace gamringer\Router;
 
 class Route implements Ventureable
 {
-
     protected $name;
     protected $pattern;
     protected $destination;
@@ -45,7 +44,7 @@ class Route implements Ventureable
         if (preg_match('#^'.$this->pattern.'$#', $target, $extract)) {
 
             $extract = array_merge($this->data, $extract);
-            
+
             return true;
         }
 
